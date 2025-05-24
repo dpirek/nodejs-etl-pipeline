@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const url = require('url');
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const STATIC_ROOT = __dirname + '/public';
 
 let dagModules = [];
