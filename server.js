@@ -9,7 +9,7 @@ let dagModules = [];
 
 async function listDags() {
   let dags = [];
-  const files = fs.readdirSync('./dags');
+  const files = fs.readdirSync(__dirname + '/dags');
 
   files.forEach(file => {    
     const dagModule = require(`./dags/${file}`);
