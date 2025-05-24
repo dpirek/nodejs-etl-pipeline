@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-etl-pipeline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "nodemon test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpirek/nodejs-etl-pipeline.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpirek/nodejs-etl-pipeline/issues"
+  },
+  "homepage": "https://github.com/dpirek/nodejs-etl-pipeline#readme",
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
+}
