@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const dag = require('../lib/dag.js');
 const request = require('../providers/rest.provider.js');
 
@@ -19,7 +20,7 @@ const pipeline = dag()
   .load(async (data) => {
     
     // save to file
-    const filePath = __dirname + '/data/posts.json';
+    const filePath = path.join(__dirname, '../data/posts.json');
     const jsonData = JSON.stringify(data, null, 2);
     fs.writeFileSync(filePath, jsonData);
     console.log(`Data saved to ${filePath}`);

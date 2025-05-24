@@ -2,9 +2,10 @@ const fs = require('fs');
 const dag = require('../lib/dag.js');
 const requestProvider = require('../providers/rest.provider.js');
 const SQLiteProvider = require('../providers/sqlite.provider.js');
+const path = require('path');
 
 const SETVICE_URL = 'https://jsonplaceholder.typicode.com/posts';
-const DB_PATH = __dirname  = '/data/posts.db';
+const DB_PATH = path.join(__dirname, '../data/posts.db');
 let output = null;
 
 const pipeline = dag()
