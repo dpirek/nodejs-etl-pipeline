@@ -19,7 +19,7 @@ const pipeline = dag()
   .load(async (data) => {
     
     // save to file
-    const filePath = './data/posts.json';
+    const filePath = __dirname + '/data/posts.json';
     const jsonData = JSON.stringify(data, null, 2);
     fs.writeFileSync(filePath, jsonData);
     console.log(`Data saved to ${filePath}`);

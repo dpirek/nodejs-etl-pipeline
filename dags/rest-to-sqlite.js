@@ -4,7 +4,7 @@ const requestProvider = require('../providers/rest.provider.js');
 const SQLiteProvider = require('../providers/sqlite.provider.js');
 
 const SETVICE_URL = 'https://jsonplaceholder.typicode.com/posts';
-const DB_PATH = './data/posts.db';
+const DB_PATH = __dirname  = '/data/posts.db';
 let output = null;
 
 const pipeline = dag()
