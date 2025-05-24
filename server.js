@@ -63,7 +63,6 @@ function contentType(url) {
 }
 
 function serverStatic(req, res) {
-  // if the request is not a static file, return
   try {
     let { pathname } = url.parse(req.url);
 
@@ -91,24 +90,6 @@ function respondJSON(res, data) {
   res.end(JSON.stringify(data));
 }
 
-async function runCommand(command) {
-  const { exec } = require('child_process');
-  return new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing command: ${error.message}`);
-        return reject(error);
-      }
-      if (stderr) {
-        console.error(`Command error output: ${stderr}`);
-        return reject(new Error(stderr));
-      }
-      console.log(`Command output: ${stdout}`);
-      resolve(stdout);
-    });
-  });
-}
-
 async function parsePostData(req) {
   return new Promise((resolve, reject) => {
     let body = '';
@@ -125,11 +106,8 @@ async function router(req, res) {
   const { url, method } = req;
   const postData = method === 'POST' ? await parsePostData(req) : null;
 
-  if (url === '/api/command' && method === 'POST') return respondJSON(res, { output: await runCommand(postData.command) });
   if (url === '/api/dags' && req.method === 'GET') {
     respondJSON(res, { data: await listDags() });
-    //const fileData = fs.readFileSync('./data.json');
-    //return respondJSON(res, { data: JSON.parse(fileData) });
   }
 
   if (url.startsWith('/api/dags/') && method === 'POST') {
