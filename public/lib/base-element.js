@@ -6,17 +6,17 @@ export class BaseEelement extends HTMLElement {
     this.props = props || {};
   }
 
-  connectedCallback() {
+  async connectedCallback() {
     if (this.props.useShadowRoot) {
       this.rootElement = this.attachShadow({ mode: 'open' });
     } else {
       this.rootElement = this;
     }
 
-    this.rootElement.appendChild(this.render());
+    this.rootElement.appendChild(await this.render());
   }
 
-  render() {
+  async render() {
     // This method should be overridden by subclasses
     throw new Error('Render method not implemented');
   }

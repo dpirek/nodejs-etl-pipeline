@@ -1,8 +1,9 @@
-import { applyStyles } from './lib/createElement.js';
+import { applyStyles, createElement } from './lib/createElement.js';
 import { bodyStyle } from './styles.js';
 import TableComponent from './components/table-component.js';
 import HeaderComponent from './components/header-component.js';
 import TerminalComponent from './components/terminal-component.js';
+import MenuComponent from './components/menu-component.js';
 
 async function loadData() {
   const response = await fetch('/api/dags');
@@ -15,8 +16,19 @@ async function loadData() {
 
 async function init() {
   const body = document.body;
-
-  applyStyles(body, bodyStyle);
+  const container = createElement('container', {
+    // style: {
+    //   display: 'flex',
+    //   flexDirection: 'column',
+    //   alignItems: 'center',
+    //   justifyContent: 'center',
+    //   width: '100%',
+    //   height: '100vh',
+    //   backgroundColor: '#f0f0f0'
+    // }
+  });
+  
+  //applyStyles(body, bodyStyle);
   
   const { data } = await loadData();
   
@@ -54,9 +66,14 @@ async function init() {
 
   const terminalComponent = new TerminalComponent({});
 
-  body.appendChild(header);
-  body.appendChild(tableComponent);
-  body.appendChild(terminalComponent);
+  const menuComponent = new MenuComponent({});
+
+  // body.appendChild(menuComponent);
+  // container.appendChild(header);
+  // container.appendChild(tableComponent);
+  // container.appendChild(terminalComponent);
+
+  // body.appendChild(container);
 }
 
 init();

@@ -16,7 +16,10 @@ class TableComponent extends BaseEelement {
     });
   }
 
-  render() {
+  async render() {
+
+    const data = await fetch('/api/dags');
+    return this.createElement('div');
     return this.createElement('table', {
       style: {
         width: '100%',
